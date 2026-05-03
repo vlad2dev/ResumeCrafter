@@ -6,7 +6,7 @@ import { escapeHtml } from '../utils/dom.js';
 export async function initSettings() {
   const container = document.getElementById('settings-container');
   container.innerHTML = `<div class="d-flex align-items-center gap-2 text-muted" role="status">
-    <div class="spinner-border spinner-border-sm" aria-hidden="true"></div><span>Loadingâ€¦</span></div>`;
+    <div class="spinner-border spinner-border-sm" aria-hidden="true"></div><span>Loading…</span></div>`;
 
   try {
     const settings = await api.getSettings();
@@ -61,13 +61,13 @@ function renderSettings(settings, container) {
                 <select id="s-model" name="gemini_model" class="form-select"
                         aria-describedby="s-model-help">
                   <option value="gemini-2.5-flash" ${settings.gemini_model === 'gemini-2.5-flash' ? 'selected' : ''}>
-                    gemini-2.5-flash (Recommended â€” 10 RPM free tier)
+                    gemini-2.5-flash (Recommended — 10 RPM free tier)
                   </option>
                   <option value="gemini-2.5-flash-lite" ${settings.gemini_model === 'gemini-2.5-flash-lite' ? 'selected' : ''}>
                     gemini-2.5-flash-lite (15 RPM free tier, fastest)
                   </option>
                   <option value="gemini-2.0-flash" ${settings.gemini_model === 'gemini-2.0-flash' ? 'selected' : ''}>
-                    gemini-2.0-flash (Legacy â€” retiring March 2026)
+                    gemini-2.0-flash (Legacy — retiring March 2026)
                   </option>
                 </select>
                 <div id="s-model-help" class="form-text">
@@ -123,7 +123,7 @@ function renderSettings(settings, container) {
 
     const submitBtn = e.target.querySelector('[type="submit"]');
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1" aria-hidden="true"></span>Savingâ€¦';
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1" aria-hidden="true"></span>Saving…';
 
     try {
       await api.saveSettings(data);

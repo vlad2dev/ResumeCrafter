@@ -63,7 +63,7 @@ export function navigate(page) {
     certs: 'Certifications', awards: 'Awards', builder: 'Builder',
     preview: 'Preview', settings: 'Settings'
   };
-  document.title = `ResumeCrafter â€” ${titles[page] || page}`;
+  document.title = `ResumeCrafter – ${titles[page] || page}`;
 
   // Announce page change to screen readers
   const sr = document.getElementById('sr-status');
