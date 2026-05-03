@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ResumeCrafter â€” AI-powered resume builder. Create tailored resumes with Gemini AI suggestions.">
+  <title>ResumeCrafter</title>
+
+  <!-- Icons -->
+  <link rel="icon" href="/icons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#0d6efd">
+
+  <!-- Local Bootstrap CSS (no CDN) -->
+  <link rel="stylesheet" href="/vendor/bootstrap.min.css">
+  <!-- App styles -->
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- Bootstrap Icons — load non-render-blocking -->
+  <link rel="preload" href="/vendor/bootstrap-icons.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/vendor/bootstrap-icons.min.css"></noscript>
+  <!-- Print styles (print media only) -->
+  <link rel="stylesheet" href="/css/print.css" media="print">
+  <!-- Preload entry module to reduce ES module discovery latency -->
+  <link rel="modulepreload" href="/js/main.js">
+</head>
+<body>
+
+  <!-- Skip to main content (accessibility) -->
+  <a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- â”€â”€ Navigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm"
+       role="navigation" aria-label="Main navigation">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#profile"
+         data-nav="profile" aria-label="ResumeCrafter home">
+        <img src="/icons/icon-192.png" alt="" width="28" height="28" aria-hidden="true">
+        ResumeCrafter
+      </a>
+
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navLinks"
+              aria-controls="navLinks" aria-expanded="false"
+              aria-label="Toggle navigation menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" role="menubar" aria-label="Site sections">
+          <li class="nav-item" role="none">
+            <a class="nav-link" href="#profile"  data-nav="profile"  role="menuitem">
+              <i class="bi bi-person-circle" aria-hidden="true"></i> Profile
+            </a>
+          </li>
+          <li class="nav-item" role="none">
+            <a class="nav-link" href="#jobs"     data-nav="jobs"     role="menuitem">
+              <i class="bi bi-briefcase" aria-hidden="true"></i> Experience
+            </a>
+          </li>
+          <li class="nav-item" role="none">
+            <a class="nav-link" href="#skills"   data-nav="skills"   role="menuitem">
+              <i class="bi bi-stars" aria-hidden="true"></i> Skills
+            </a>
+          </li>
+          <li class="nav-item" role="none">
+            <a class="nav-link" href="#certs"    data-nav="certs"    role="menuitem">
+              <i class="bi bi-patch-check" aria-hidden="true"></i> Certifications
+            </a>
+          </li>
+          <li class="nav-item" role="none">
+            <a class="nav-link" href="#awards"   data-nav="awards"   role="menuitem">
+              <i class="bi bi-trophy" aria-hidden="true"></i> Awards
+            </a>
+          </li>
+          <li class="nav-item" role="none">
+            <a class="nav-link" href="#builder"  data-nav="builder"  role="menuitem">
+              <i class="bi bi-layout-text-sidebar" aria-hidden="true"></i> Builder
+            </a>
+          </li>
+          <li class="nav-item" role="none">
+            <a class="nav-link" href="#preview"  data-nav="preview"  role="menuitem">
+              <i class="bi bi-file-earmark-person" aria-hidden="true"></i> Preview
+            </a>
+          </li>
+          <li class="nav-item" role="none">
+            <a class="nav-link" href="#settings" data-nav="settings" role="menuitem">
+              <i class="bi bi-gear" aria-hidden="true"></i> Settings
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- â”€â”€ Main Content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <main id="main-content" class="container-fluid py-4 px-3 px-md-4">
+
+    <!-- Profile -->
+    <section id="page-profile" data-page="profile" class="page-section"
+             role="region" aria-labelledby="profile-heading">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 id="profile-heading" class="h2 mb-0">
+          <i class="bi bi-person-circle text-primary me-2" aria-hidden="true"></i>Your Profile
+        </h1>
+      </div>
+      <div id="profile-form-container"></div>
+    </section>
+
+    <!-- Experience -->
+    <section id="page-jobs" data-page="jobs" class="page-section d-none"
+             role="region" aria-labelledby="jobs-heading">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 id="jobs-heading" class="h2 mb-0">
+          <i class="bi bi-briefcase text-primary me-2" aria-hidden="true"></i>Work Experience
+        </h1>
+        <button class="btn btn-primary" id="add-job-btn" aria-label="Add new job">
+          <i class="bi bi-plus-lg" aria-hidden="true"></i> Add Job
+        </button>
+      </div>
+      <div id="jobs-container"></div>
+    </section>
+
+    <!-- Skills -->
+    <section id="page-skills" data-page="skills" class="page-section d-none"
+             role="region" aria-labelledby="skills-heading">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 id="skills-heading" class="h2 mb-0">
+          <i class="bi bi-stars text-primary me-2" aria-hidden="true"></i>Skills
+        </h1>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm" id="add-category-btn"
+                  aria-label="Add skill category">
+            <i class="bi bi-folder-plus" aria-hidden="true"></i> Add Category
+          </button>
+          <button class="btn btn-primary" id="add-skill-btn" aria-label="Add new skill">
+            <i class="bi bi-plus-lg" aria-hidden="true"></i> Add Skill
+          </button>
+        </div>
+      </div>
+      <div id="skills-container"></div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="page-certs" data-page="certs" class="page-section d-none"
+             role="region" aria-labelledby="certs-heading">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 id="certs-heading" class="h2 mb-0">
+          <i class="bi bi-patch-check text-primary me-2" aria-hidden="true"></i>Certifications
+        </h1>
+        <button class="btn btn-primary" id="add-cert-btn" aria-label="Add new certification">
+          <i class="bi bi-plus-lg" aria-hidden="true"></i> Add Certification
+        </button>
+      </div>
+      <div id="certs-container"></div>
+    </section>
+
+    <!-- Awards -->
+    <section id="page-awards" data-page="awards" class="page-section d-none"
+             role="region" aria-labelledby="awards-heading">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 id="awards-heading" class="h2 mb-0">
+          <i class="bi bi-trophy text-primary me-2" aria-hidden="true"></i>Awards &amp; Achievements
+        </h1>
+        <button class="btn btn-primary" id="add-award-btn" aria-label="Add new award">
+          <i class="bi bi-plus-lg" aria-hidden="true"></i> Add Award
+        </button>
+      </div>
+      <div id="awards-container"></div>
+    </section>
+
+    <!-- Builder -->
+    <section id="page-builder" data-page="builder" class="page-section d-none"
+             role="region" aria-labelledby="builder-heading">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 id="builder-heading" class="h2 mb-0">
+          <i class="bi bi-layout-text-sidebar text-primary me-2" aria-hidden="true"></i>Resume Builder
+        </h1>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary btn-sm" id="save-config-btn">
+            <i class="bi bi-floppy" aria-hidden="true"></i> Save Config
+          </button>
+          <button class="btn btn-primary" id="view-preview-btn">
+            <i class="bi bi-eye" aria-hidden="true"></i> View Full Preview
+          </button>
+        </div>
+      </div>
+      <div id="builder-container"></div>
+    </section>
+
+    <!-- Preview -->
+    <section id="page-preview" data-page="preview" class="page-section d-none"
+             role="region" aria-labelledby="preview-heading">
+      <div class="d-flex justify-content-between align-items-center mb-4 no-print">
+        <h1 id="preview-heading" class="h2 mb-0">
+          <i class="bi bi-file-earmark-person text-primary me-2" aria-hidden="true"></i>Resume Preview
+        </h1>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary" id="back-to-builder-btn"
+                  aria-label="Back to builder">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i> Back to Builder
+          </button>
+          <button class="btn btn-primary" onclick="window.print()"
+                  aria-label="Print or save resume as PDF">
+            <i class="bi bi-printer" aria-hidden="true"></i> Print / Save PDF
+          </button>
+        </div>
+      </div>
+      <div id="preview-container"></div>
+    </section>
+
+    <!-- Settings -->
+    <section id="page-settings" data-page="settings" class="page-section d-none"
+             role="region" aria-labelledby="settings-heading">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 id="settings-heading" class="h2 mb-0">
+          <i class="bi bi-gear text-primary me-2" aria-hidden="true"></i>Settings
+        </h1>
+      </div>
+      <div id="settings-container"></div>
+    </section>
+
+  </main>
+
+  <!-- â”€â”€ Footer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <footer class="bg-light border-top py-3 mt-5 no-print" role="contentinfo">
+    <div class="container-fluid text-center text-muted small">
+      <span>ResumeCrafter &mdash; AI-powered resume builder</span>
+      &nbsp;&bull;&nbsp;
+      <button type="button" class="btn btn-link btn-sm p-0 text-muted"
+              id="attribution-btn"
+              aria-label="View library attributions and acknowledgements">
+        Acknowledgements &amp; Libraries
+      </button>
+    </div>
+  </footer>
+
+  <!-- â”€â”€ Toast Container â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <div id="toast-container" class="toast-container position-fixed bottom-0 end-0 p-3"
+       aria-live="polite" aria-atomic="false" style="z-index:1100"></div>
+
+  <!-- â”€â”€ Generic Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <div class="modal fade" id="appModal" tabindex="-1"
+       aria-labelledby="appModalLabel" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="appModalLabel">Modal</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                  aria-label="Close dialog"></button>
+        </div>
+        <div class="modal-body" id="appModalBody"></div>
+        <div class="modal-footer" id="appModalFooter">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="appModalConfirm">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- â”€â”€ Attribution Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <div class="modal fade" id="attributionModal" tabindex="-1"
+       aria-labelledby="attributionModalLabel" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="attributionModalLabel">
+            <i class="bi bi-heart-fill text-danger me-2" aria-hidden="true"></i>
+            Acknowledgements &amp; Libraries
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                  aria-label="Close attributions dialog"></button>
+        </div>
+        <div class="modal-body" id="attribution-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- â”€â”€ Confirm Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <div class="modal fade" id="confirmModal" tabindex="-1"
+       aria-labelledby="confirmModalLabel" aria-hidden="true" role="alertdialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="confirmModalLabel">Confirm</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="confirmModalBody">Are you sure?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmModalOk">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status region for screen readers -->
+  <div id="sr-status" aria-live="polite" class="visually-hidden"></div>
+
+  <!-- Local Bootstrap JS bundle (includes Popper, no CDN) -->
+  <script src="/vendor/bootstrap.bundle.min.js"></script>
+  <!-- App entry point -->
+  <script type="module" src="/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+@media print {
+  /* ── Hide all UI chrome ─────────────────────────────────────────────── */
+  nav,
+  footer,
+  .no-print,
+  #toast-container,
+  #appModal,
+  #confirmModal,
+  #attributionModal,
+  .skip-link,
+  .navbar,
+  .modal-backdrop,
+  [data-bs-toggle],
+  .btn:not(.resume-doc .btn) {
+    display: none !important;
+  }
+
+  /* ── Page Setup ─────────────────────────────────────────────────────── */
+  @page {
+    margin: 0.5in;
+    size: letter portrait;
+  }
+
+  html, body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Show the preview section even if it has d-none from SPA nav */
+  #page-preview {
+    display: block !important;
+  }
+
+  /* ── Resume Document ────────────────────────────────────────────────── */
+  .resume-doc {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-family: 'Times New Roman', Georgia, serif !important;
+    font-size: 11pt !important;
+    color: #000 !important;
+  }
+
+  .resume-name {
+    font-size: 20pt !important;
+  }
+
+  .resume-section-title {
+    font-size: 11pt !important;
+    border-bottom: 1pt solid #000 !important;
+  }
+
+  .resume-contact a,
+  .resume-doc a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  /* Suppress URL printing after links */
+  .resume-doc a[href]::after {
+    content: '' !important;
+  }
+
+  /* ── Page Break Rules ───────────────────────────────────────────────── */
+  h2, h3, h4 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .resume-job,
+  li,
+  p {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .resume-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* ── Force black on everything ──────────────────────────────────────── */
+  * {
+    color: black !important;
+    background: white !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
