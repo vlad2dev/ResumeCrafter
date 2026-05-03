@@ -3,6 +3,10 @@ import { getState } from '../state.js';
 import { navigate } from '../router.js';
 import { escapeHtml, formatDate } from '../utils/dom.js';
 
+function stripUrl(url) {
+  return url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+}
+
 export async function initPreview() {
   const container = document.getElementById('preview-container');
   container.innerHTML = `<div class="d-flex align-items-center gap-2 text-muted" role="status">
@@ -70,12 +74,12 @@ function renderResumeHtml(profile, jobs, skillsByCategory, certs, awards) {
         <h1 class="resume-name">${escapeHtml(profile.full_name || 'Your Name')}</h1>
         <div class="resume-contact" aria-label="Contact information">
           ${[
-            profile.email     ? `<a href="mailto:${escapeHtml(profile.email)}">${escapeHtml(profile.email)}</a>` : '',
+            profile.email     ? escapeHtml(profile.email) : '',
             profile.phone     ? escapeHtml(profile.phone) : '',
             profile.location  ? escapeHtml(profile.location) : '',
-            profile.linkedin  ? `<a href="${escapeHtml(profile.linkedin)}">LinkedIn</a>` : '',
-            profile.github    ? `<a href="${escapeHtml(profile.github)}">GitHub</a>` : '',
-            profile.website   ? `<a href="${escapeHtml(profile.website)}">Portfolio</a>` : '',
+            profile.linkedin  ? escapeHtml(stripUrl(profile.linkedin)) : '',
+            profile.github    ? escapeHtml(stripUrl(profile.github)) : '',
+            profile.website   ? escapeHtml(stripUrl(profile.website)) : '',
           ].filter(Boolean).join(' <span class="resume-sep" aria-hidden="true">|</span> ')}
         </div>
         ${profile.summary ? `<p class="resume-summary">${escapeHtml(profile.summary)}</p>` : ''}
