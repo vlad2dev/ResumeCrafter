@@ -40,18 +40,27 @@
 }
 
 /* ── Navbar ─────────────────────────────────────────────────────────────── */
+/* Bootstrap primary (#0d6efd) is only 3.1:1 on white — fails WCAG AA.
+   #1a4fba gives 6.5:1. navbar-dark also sets nav-link opacity to 0.55
+   which blends to ~#98b0e0 and fails too, so force full white. */
+.navbar.bg-primary {
+  background-color: #1a4fba !important;
+}
 .navbar .nav-link {
   border-radius: 0.375rem;
   padding: 0.375rem 0.75rem;
   transition: background var(--rf-transition);
+  color: #ffffff !important;
 }
 .navbar .nav-link:hover,
 .navbar .nav-link:focus {
   background: rgba(255,255,255,0.15);
+  color: #ffffff !important;
 }
 .navbar .nav-link[aria-current="page"],
 .navbar .nav-link.active {
   background: rgba(255,255,255,0.25);
+  color: #ffffff !important;
   font-weight: 600;
 }
 
