@@ -16,8 +16,9 @@
   }
 
   /* ── Page Setup ─────────────────────────────────────────────────────── */
+  /* margin: 0 removes browser-injected date/URL/page-number headers */
   @page {
-    margin: 0.5in;
+    margin: 0;
     size: letter portrait;
   }
 
@@ -30,6 +31,11 @@
   main {
     padding: 0 !important;
     margin: 0 !important;
+  }
+
+  /* Replace @page margin with padding on the document itself */
+  .resume-doc {
+    padding: 0.5in !important;
   }
 
   /* Show the preview section even if it has d-none from SPA nav */
